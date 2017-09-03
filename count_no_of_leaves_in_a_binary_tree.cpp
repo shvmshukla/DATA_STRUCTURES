@@ -25,7 +25,7 @@ struct node* newNode(int data)
  
 /* Fucntion to count two leaves */
 
-int countLeaves(Node* root)
+int countLeaves(struct node* root)
 {
   // Your code here
   if(!root) return 0;
