@@ -66,3 +66,70 @@ Node*  addTwoLists(Node* first, Node* second){
  
  return head;
 }
+
+
+//EFFICIENT_CODE
+/*
+Please note that it's Function problem i.e.
+you need to write your solution in the form Function(s) only.
+Driver Code to call/invoke your function would be added by GfG's Online Judge.*/
+
+
+/*struct Node
+{
+    int data;
+   Node* next;
+}; */
+//write a function returns the resultant linked list
+Node*  addTwoLists(Node* first, Node* second){
+    Node*temp=first;
+    int c=0;
+    Node*prev=first;
+  while(first && second){
+      first->data +=second->data;
+      if(c==1){
+          first->data+=1;
+          c=0;
+      }
+      if(first->data >=10){
+          c=1;
+          first->data-=10;
+      }
+      prev=first;
+      first=first->next;
+      second=second->next;
+  }
+  while(first){
+      if(c==1){
+          first->data+=1;
+          c=0;
+      }
+      if(first->data>=10){
+          c=1;
+          first->data-=10;
+      }
+      prev=first;
+      first=first->next;
+  }
+  while(second){
+      prev->next=new Node();
+      prev->next->data=second->data;
+      if(c==1){
+          prev->next->data+=1;
+          c=0;
+      }
+      if(prev->next->data>=10){
+          c=1;
+          prev->next->data-=10;
+      }
+      prev=prev->next;
+      second=second->next;
+  }
+  
+  if(c==1){
+      prev->next=new Node();
+      prev->next->data=1;
+      prev=prev->next;
+  }
+  return temp;
+}
