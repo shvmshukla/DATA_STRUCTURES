@@ -24,29 +24,17 @@ struct node* newNode(int data)
 }
  
 /* Fucntion to count two leaves */
-int countLeaves(struct node* a)
+
+int countLeaves(Node* root)
 {
-  static int count=0;
-    /*1. empty */
-    if (a==NULL)
-      {
-              return 0;
-      }
-    else if(a->left==NULL && a->right==NULL)   //this will be true only in case of leaf node
-     {
-     
-       count++;
-     }
-    else
-      {
-        countLeaves(a->left); 
-        countLeaves(a->right);
-      }
- 
-     
- return count;
-} 
- 
+  // Your code here
+  if(!root) return 0;
+  if(root->left == NULL && root->right == NULL) return 1;
+  int l = countLeaves(root->left);
+  int r = countLeaves(root->right);
+  return l+r;
+}
+
 /* Driver program to test identicalTrees function*/
 int main()
 {
