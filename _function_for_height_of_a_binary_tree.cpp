@@ -22,7 +22,7 @@ int height(Node* node)
         
     }
     
-    (l>r)?c=l:c=r;
+    
  
- return c;    
+ return max(l,r);    
 }
