@@ -1,6 +1,4 @@
-/*
-Please note that it's Function problem i.e.
-you need to write your solution in the form Function(s) only.
+you need to write your solution in the form of Function(s) only.
 Driver Code to call/invoke your function would be added by GfG's Online Judge.*/
 
 
@@ -10,22 +8,22 @@ struct Node
     int data;
     Node* left, * right;
 }; */
-// A wrapper over leftViewUtil()
-void lvw(Node *root,int l,int *m){
+void leftUtil(Node *root,int level,int *max)
+{
     if(root==NULL)
-        return;
-    if(*m<l){
-        *m=l;
-        cout <<root->data<<" ";
-    }
-    lvw(root->left,l+1,m);
-    lvw(root->right,l+1,m);
     return;
+    if(*max<level)
+    {
+        printf("%d ",root->data);
+        *max=level;
+    }
+    leftUtil(root->left,level+1,max);
+    leftUtil(root->right,level+1,max);
 }
-
+// A wrapper over leftViewUtil()
 void leftView(Node *root)
 {
    // Your code here
-   int m=0;
-   lvw(root,1,&m);
+   int max = 0;
+   leftUtil(root, 1, &max);
 }
