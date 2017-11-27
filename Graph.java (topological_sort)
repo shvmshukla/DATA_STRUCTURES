@@ -1,0 +1,79 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
+/**
+ *
+ * @author shivam
+ */
+import java.util.*;
+class Graph{
+   public int v;
+    public LinkedList<Integer> array[];  //array 
+    
+    Graph(int v)
+    {
+        System.out.println("const");
+       int V=v ;
+      array = new LinkedList[V]; 
+        for(int i=0;i<V;i++)
+        {
+            array[i]= new LinkedList<Integer>(V);
+        }
+    }
+   void addEdge(int src,int dest)
+   {
+       array[src].addLast(dest);
+   }
+
+   public  void topological_sort_untill(int v,boolean visited[],Stack stack)
+ {
+   visited[v]=true;
+   Iterator<Integer> itr = array[v].iterator();
+   while(itr.next()!=null)
+   {
+      int i=itr.next();
+      topological_sort_untill(i,visited,stack); 
+   }
+   stack.push(v);
+ } 
+   
+public  void topological_sort()
+ {
+   Stack stack= new Stack();
+   boolean visited[]= new boolean[v];
+   for(int i=0;i<v;i++)
+       visited[i]=false;
+   
+   for(int i=0;i<v;i++)
+   {
+     if(visited[i]==false)
+     {
+         topological_sort_untill(i,visited,stack);
+     }
+   }
+  while(!stack.isEmpty())
+         System.out.println(stack.pop()+"->");
+ }
+
+
+    public static void main(String[] args) {
+        int no_of_vertex=5;
+        Graph graph= new Graph(no_of_vertex);
+        System.out.println("hello main");
+      try{  graph.addEdge(5, 2);
+        graph.addEdge(5, 0);
+        graph.addEdge(4, 0);
+        graph.addEdge(4, 1);
+        graph.addEdge(2, 3);
+        graph.addEdge(3, 1);
+        graph.topological_sort();
+      }catch(Exception e)
+      {
+          System.out.println("e.printStackTrace()");
+      }
+      }
+}   
+
