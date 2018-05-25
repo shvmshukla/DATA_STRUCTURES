@@ -1,4 +1,5 @@
 /*
+https://practice.geeksforgeeks.org/problems/delete-middle-element-of-a-stack/1
 Given a stack with push(), pop(), empty() operations, delete middle of it without using any additional data structure.
 
 Input:
