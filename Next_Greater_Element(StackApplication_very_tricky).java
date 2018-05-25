@@ -20,7 +20,8 @@ public class next_greater_element_in_array {
      {
          int next=arr[i];
          int element= s.pop(); //1
-         
+      if(!s.isEmpty())
+      {
          while(element < next)
          {
              System.out.println(element+"--->"+next);
@@ -34,6 +35,7 @@ public class next_greater_element_in_array {
         {
             s.push(element);
         }
+      }     
         s.push(next);
      }
      //for remaining elements in stack print -1
