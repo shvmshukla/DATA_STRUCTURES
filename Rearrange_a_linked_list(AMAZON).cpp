@@ -24,7 +24,7 @@ Output:
 1 3 2 4
 1 3 5 2 4
 */
-
+//METHOD1:
 Node *rearrangeEvenOdd(Node *head)
 {
    // Your Code here
@@ -45,4 +45,48 @@ Node *rearrangeEvenOdd(Node *head)
    }
    odd->next = even;
    return temp;
+}
+-------------------------------------------------------------------------------------------------------------------------
+//METHOD2:
+Node *rearrangeEvenOdd(Node *head)
+{
+   // Your Code here
+ struct Node*temp=head,*prev=head,*end=head;
+ 
+   int count =1,len=1,i=1;
+   while(temp->next!=NULL)
+   {
+       temp=temp->next;
+       len++;
+   }
+  // printf("%d",len);
+   end=temp;
+   temp=head;
+   
+   while(i<=len)
+   {
+      if(i%2==0 && temp->next!=NULL)
+      {
+      //  printf("%d",len);  
+        int key=temp->data;
+        prev->next=temp->next;
+        temp=temp->next;
+        //free(temp);
+        
+       struct Node* add= (struct Node*)malloc(sizeof(Node)); 
+        add->data=key;
+        add->next=NULL;
+        
+        end->next=add;
+        end=add;
+      }
+      else
+      {
+       prev=temp; 
+       temp=temp->next;
+      }
+      i++;
+   }
+   
+   return head;
 }
